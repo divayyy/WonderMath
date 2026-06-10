@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WonderMath | Latihan Numerasi Balok</title>
+
+<style>
+    /* 1. Reset agar full layar */
+    * { box-sizing: border-box; }
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100vh; /* Memaksa tinggi minimal layar */
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+        background-image: url('assets/images/background1.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #e5e7eb;
+        padding: 40px 20px; /* Memberi jarak agar tidak terlalu rapat di pinggir */
+    }
+
+    /* 2. Mengatur container agar lebih lebar dan rapi */
+    .container { 
+        max-width: 1200px; /* Ditingkatkan untuk layar laptop */
+        margin: auto; 
+        background: rgba(15, 23, 42, 0.9); /* Sedikit lebih gelap agar teks lebih terbaca */
+        padding: 40px; 
+        border-radius: 20px;
+        min-height: 90vh; /* Agar container tetap terlihat besar */
+    }
+
+    h1, h2 { color: #6cadef; }
+    
+    .soal { 
+        background: rgba(2, 6, 23, 0.7); 
+        border: 1px solid #475569; 
+        border-radius: 14px; 
+        padding: 20px; 
+        margin-bottom: 20px; 
+    }
+    
+    .btn-ai { 
+        margin-top: 12px; padding: 10px 18px; border-radius: 12px; 
+        background: #020617; color: #2fa6e5; border: 2px solid #24befb; 
+        cursor: pointer; font-weight: 600; 
+    }
+    
+    .back-btn { 
+        display: inline-block; margin-bottom: 20px; padding: 10px 20px; 
+        border-radius: 12px; background: #020617; color: #8a9bfd; 
+        text-decoration: none; font-weight: 600; border: 2px solid #24a1fb; 
+    }
+    
+    .section-title { margin-top: 30px; border-left: 4px solid #2476fb; padding-left: 10px; }
+    .text-biru { color: #38bdf8; font-weight: bold; }
+    footer { margin-top: 40px; text-align: center; color: #94a3b8; }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<a href="baloklp.html" class="back-btn">⬅ Kembali</a>
+
+<h1>Latihan Numerasi Geometri</h1>
+<h2>Materi: Balok</h2>
+
+<p>
+Klik <b>Tanya AI Gemini</b> untuk mendapatkan <b>petunjuk (clue)</b> guna membantu Anda menyelesaikan tantangan di bawah ini.
+</p>
+
+<hr>
+
+<h2 class="section-title">📦 Koleksi Soal Balok</h2>
+
+<div class="soal">
+<p><b>Soal 1: Volume Dasar</b><br>
+Sebuah akuarium berbentuk balok memiliki ukuran panjang 80 cm, lebar 40 cm, dan tinggi 50 cm. Jika akuarium tersebut diisi air hingga penuh, berapakah volume air dalam liter? (Ingat: 1 liter = 1.000 cm³).
+</p>
+<button class="btn-ai" onclick="tanyaAI(this)">Tanya AI Gemini</button>
+</div>
+
+<div class="soal">
+<p><b>Soal 2: Luas Permukaan (Kontekstual)</b><br>
+Budi ingin membungkus sebuah kotak kado berbentuk balok dengan panjang 20 cm, lebar 10 cm, dan tinggi 5 cm. Berapakah luas minimal kertas kado yang dibutuhkan Budi?
+</p>
+<button class="btn-ai" onclick="tanyaAI(this)">Tanya AI Gemini</button>
+</div>
+
+<div class="soal">
+<p><b>Soal 3: Logika Penerapan (Pengemasan)</b><br>
+Sebuah kardus besar berbentuk balok berukuran 50 cm × 40 cm × 24 cm akan diisi kotak sabun berukuran 5 cm × 4 cm × 8 cm. Berapa maksimal kotak sabun yang dapat dimuat ke dalam kardus besar tersebut?
+</p>
+<button class="btn-ai" onclick="tanyaAI(this)">Tanya AI Gemini</button>
+</div>
+
+<div class="soal">
+<p><b>Soal 4: Tantangan Mencari Dimensi</b><br>
+Sebuah balok memiliki volume 240 cm³. Jika diketahui panjangnya 10 cm dan lebarnya 6 cm, berapakah tinggi balok tersebut?
+</p>
+<button class="btn-ai" onclick="tanyaAI(this)">Tanya AI Gemini</button>
+</div>
+
+<div class="soal">
+<p><b>Soal 5: Kapasitas & Debit</b><br>
+Sebuah bak mandi berbentuk balok memiliki ukuran panjang 1 meter, lebar 80 cm, dan tinggi 60 cm. Bak tersebut diisi air menggunakan keran dengan debit 10 liter/menit. Jika bak dalam keadaan kosong, berapa lama waktu yang dibutuhkan untuk mengisi bak tersebut hingga penuh?
+</p>
+<button class="btn-ai" onclick="tanyaAI(this)">Tanya AI Gemini</button>
+</div>
+<div class="soal">
+<p><b>Soal 6: Perubahan Dimensi (Skala)</b><br>
+Sebuah balok mainan memiliki ukuran 4 cm × 3 cm × 2 cm. Jika setiap ukuran sisi balok tersebut diperbesar 3 kali lipat, berapa kali lipat volume balok baru dibandingkan dengan volume balok semula?
+</p>
+<button class="btn-ai" onclick="tanyaAI(this)">Tanya AI Gemini</button>
+</div>
+
+<div class="soal">
+<p><b>Soal 7: Luas Sisi Spesifik</b><br>
+Sebuah bak air tanpa tutup berbentuk balok memiliki panjang 1,2 meter, lebar 80 cm, dan tinggi 50 cm. Berapakah luas permukaan bagian dalam bak air tersebut?
+</p>
+<button class="btn-ai" onclick="tanyaAI(this)">Tanya AI Gemini</button>
+</div>
+
+<div class="soal">
+<p><b>Soal 8: Analisis Jaring-Jaring</b><br>
+Sebuah jaring-jaring balok memiliki ukuran persegi panjang yang berbeda-beda. Jika dua sisi yang berdekatan pada jaring-jaring tersebut memiliki luas 24 cm² dan 15 cm², serta diketahui panjang rusuk yang berhimpit adalah 3 cm, berapakah volume balok tersebut?
+</p>
+<button class="btn-ai" onclick="tanyaAI(this)">Tanya AI Gemini</button>
+</div>
+
+<div class="soal">
+<p><b>Soal 9: Perbandingan Rusuk</b><br>
+Perbandingan panjang, lebar, dan tinggi sebuah balok adalah 4 : 3 : 2. Jika jumlah panjang seluruh rusuk balok tersebut adalah 108 cm, tentukan volume balok tersebut!
+</p>
+<button class="btn-ai" onclick="tanyaAI(this)">Tanya AI Gemini</button>
+</div>
+
+<div class="soal">
+<p><b>Soal 10: Pengurangan Volume (Sisa Air)</b><br>
+Sebuah bak penuh berisi air dengan ukuran 60 cm × 40 cm × 50 cm. Jika air tersebut diambil sebanyak 30 liter, berapa tinggi sisa air di dalam bak tersebut?
+</p>
+<button class="btn-ai" onclick="tanyaAI(this)">Tanya AI Gemini</button>
+</div>
+<footer>
+WonderMath © 2026 | Platform Numerasi Interaktif WonderMath
+</footer>
+
+</div>
+
+<script>
+function tanyaAI(btn){
+    // Mengambil teks soal tanpa teks pada tombol
+    const soal = btn.parentElement.querySelector('p').innerText;
+
+    const prompt = `
+Kamu adalah AI guru GeoSMART.
+
+Tugas kamu:
+- Hanya memberi PETUNJUK (clue) langkah demi langkah.
+- JANGAN memberi jawaban akhir secara langsung.
+- Bantu siswa memahami konsep (misalnya konversi satuan atau rumus yang tepat).
+
+Soal:
+${soal}
+`;
+
+    navigator.clipboard.writeText(prompt).then(() => {
+        alert("Prompt petunjuk telah disalin! Silakan tempelkan di Gemini.");
+        window.open("https://gemini.google.com/app", "_blank");
+    });
+}
+</script>
+
+</body>
+</html>

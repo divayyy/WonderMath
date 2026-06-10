@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balok - WonderMath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .slide-container {
+            background-color: #050a18;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Urbanist', sans-serif;
+            height: 720px;
+            width: 1280px;
+            padding: 60px 80px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+        }
+
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            right: -150px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.12) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .slide-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 191, 255, 0.02) 0%, transparent 40%);
+            z-index: 0;
+        }
+
+        .slide-container > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 50px;
+        }
+
+        .title-group h2 {
+            color: #00bfff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 6px;
+            margin: 0 0 12px 0;
+            text-transform: uppercase;
+        }
+
+        .title-group h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .user-badge {
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            display: flex;
+            gap: 12px;
+            padding: 10px 24px;
+        }
+
+        .user-badge i { color: #FFB800; }
+        .user-badge span { font-size: 15px; font-weight: 600; }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 60px;
+            flex-grow: 1;
+        }
+
+        .visual-panel {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            justify-content: space-between;
+        }
+
+        .model-stage {
+            align-items: center;
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Perbaikan CSS untuk model-viewer agar ukurannya pas */
+        .model-stage model-viewer {
+            width: 100%;
+            height: 280px;
+            filter: drop-shadow(0 0 50px rgba(0, 191, 255, 0.4));
+        }
+
+        #formula-container {
+            background: rgba(0, 0, 0, 0.4);
+            border-left: 5px solid #00bfff;
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .formula-label {
+            color: #94a3b8;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .action-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .action-card {
+            align-items: center;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            cursor: pointer;
+            display: flex;
+            gap: 25px;
+            padding: 24px 30px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .action-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #00bfff;
+            transform: translateX(15px);
+            box-shadow: 0 10px 30px rgba(0, 191, 255, 0.1);
+        }
+
+        .icon-box {
+            align-items: center;
+            border-radius: 18px;
+            display: flex;
+            height: 64px;
+            justify-content: center;
+            width: 64px;
+            flex-shrink: 0;
+        }
+
+        .icon-blue { background: #00bfff; color: #fff; box-shadow: 0 0 25px rgba(0, 191, 255, 0.3); }
+        .icon-teal { background: #00fa9a; color: #050a18; box-shadow: 0 0 25px rgba(0, 250, 154, 0.3); }
+        .icon-gold { background: #ffb800; color: #050a18; box-shadow: 0 0 25px rgba(255, 184, 0, 0.3); }
+
+        .card-info h3 {
+            color: #fff;
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+        }
+
+        .card-info p {
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .btn-nav-exit {
+            align-items: center;
+            background: transparent;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            color: #64748b;
+            display: flex;
+            font-size: 15px;
+            font-weight: 600;
+            justify-content: center;
+            margin-top: auto;
+            padding: 20px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-nav-exit:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #fff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slide-container" id="balokInterior">
+    <header>
+        <div class="title-group">
+            <h2>Geometri</h2>
+            <h1>Bangun Ruang Balok</h1>
+        </div>
+        <div class="user-badge">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span id="userName">Student WonderMath</span>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="visual-panel">
+            <div class="model-stage">
+                <model-viewer 
+                    src="assets/images/bangunruang/balok.glb" 
+                    alt="Model 3D Balok" 
+                    auto-rotate 
+                    camera-controls 
+                    touch-action="pan-y">
+                </model-viewer>
+            </div>
+            
+            <div id="formula-container">
+                <span class="formula-label">Persamaan Volume (V)</span>
+                <math display="block">
+                    <mi>V</mi>
+                    <mo>=</mo>
+                    <mi>p</mi>
+                    <mo>×</mo>
+                    <mi>l</mi>
+                    <mo>×</mo>
+                    <mi>t</mi>
+                </math>
+            </div>
+        </div>
+
+        <div class="action-panel">
+            
+            <a href="baloklaptop.html" class="action-card">
+                <div class="icon-box icon-blue">
+                    <i class="fa-solid fa-vr-cardboard"></i>
+                </div>
+                <div class="card-info">
+                    <h3>Eksplorasi 3D & Jaring</h3>
+                    <p>Bedah rusuk, sisi, dan bongkar pasang jaring-jaring balok secara interaktif.</p>
+                </div>
+            </a>
+
+            <a href="latihan.html" class="action-card">
+                <div class="icon-box icon-teal">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <div class="card-info">
+                    <h3>Latihan Mandiri (+AI)</h3>
+                    <p>Selesaikan tantangan dengan bimbingan scaffolding AI cerdas.</p>
+                </div>
+            </a>
+
+            <a href="kuisbaloklp.html" class="action-card">
+                <div class="icon-box icon-gold">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <div class="card-info">
+                    <h3>Kuis Evaluasi</h3>
+                    <p>Uji batas kemampuanmu secara mandiri dan raih skor kelulusan instan.</p>
+                </div>
+            </a>
+
+            <a href="dashboard.html" class="btn-nav-exit">
+                <i class="fa-solid fa-arrow-left-long" style="margin-right: 15px;"></i>
+                Kembali ke Dashboard Utama
+            </a>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const name = localStorage.getItem('userName');
+        if (name && name.trim() !== "") {
+            document.getElementById('userName').innerText = name;
+        }
+    });
+</script>
+
+</body>
+</html>
