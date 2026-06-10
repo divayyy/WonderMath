@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kuis Balok Modern</title>
+<title>Kuis Tabung </title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -314,25 +314,25 @@ body{
     }
 
 }
-.dashboard-btn{
+.dashboard-btn {
+    text-decoration: none;
+    background: #f59e0b;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .3s;
+    /* TAMBAHKAN INI */
+    position: relative;
+    z-index: 10; 
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    z-index: 100;
+    display: inline-block;
 
-    text-decoration:none;
-
-    background:#f59e0b;
-
-    color:white;
-
-    padding:8px 15px;
-
-    border-radius:25px;
-
-    font-size:14px;
-
-    font-weight:600;
-
-    transition:.3s;
 }
-
 .dashboard-btn:hover{
 
     background:#d97706;
@@ -382,16 +382,17 @@ body{
 
 <div class="topbar">
 
+<div class="topbar">
     <div style="display:flex;gap:10px;align-items:center;">
 
-        <a href="tabuunghp.html" class="dashboard-btn">
+        <a href="tabuunglp.html" class="dashboard-btn">
             Kembali
         </a>
 
         <div class="timer" id="timer">
             ⏰ 10:00
         </div>
-
+    </div>
     </div>
 
     <div class="badge" id="badge">
