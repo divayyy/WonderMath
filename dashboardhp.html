@@ -114,7 +114,7 @@
 
         /* HERO CONTENT LAYOUT */
         .hero-section {
-            padding: 25px 20px 15px 20px;
+            padding: 25px 20px 25px 20px;
             text-align: center;
             flex-grow: 1;
             display: flex;
@@ -214,7 +214,7 @@
             line-height: 1.3;
         }
 
-        /* TUTOR BUTTON AREA (SEKARANG HANYA 1 TOMBOL) */
+        /* TUTOR BUTTON AREA */
         .tutor-grid {
             display: flex;
             flex-direction: column;
@@ -247,6 +247,20 @@
             color: #111827;
             box-shadow: 0 0 15px rgba(255, 184, 0, 0.4);
             text-decoration: none;
+        }
+
+        /* Perbaikan Footer */
+        .custom-footer {
+            width: 100%; 
+            text-align: center; 
+            color: rgba(255, 255, 255, 0.7); 
+            font-size: 0.8rem; 
+            letter-spacing: 0.5px;
+            padding: 15px 10px;
+            background: rgba(10, 15, 30, 0.5); 
+            backdrop-filter: blur(5px);         
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto; /* Memaksa footer ke paling bawah jika konten sedikit */
         }
     </style>
 </head>
@@ -302,6 +316,10 @@
         </div>
     </main>
 
+    <footer class="custom-footer">
+        Developed by <strong>DEVI</strong> & <strong>NURBAITY</strong> | <strong>UNIVERSITAS NEGERI MAKASSAR</strong>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
@@ -321,19 +339,5 @@
             window.location.replace('index.html'); 
         });
     </script>
-    <footer style="
-    position: absolute; 
-    bottom: 0; 
-    width: 100%; 
-    text-align: center; 
-    color: rgba(255, 255, 255, 0.7); 
-    font-size: 0.8rem; 
-    letter-spacing: 0.5px;
-    padding: 15px 0;
-    background: rgba(10, 15, 30, 0.5); /* Background gelap transparan */
-    backdrop-filter: blur(5px);         /* Efek kaca buram (glassmorphism) */
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-">
-    Developed by <strong>DEVI</strong> & <strong>NURBAITY</strong> | <strong>UNIVERSITAS NEGERI MAKASSAR</strong>
 </body>
 </html>
